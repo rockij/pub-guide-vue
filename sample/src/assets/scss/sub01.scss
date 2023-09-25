@@ -1,0 +1,500 @@
+.faq-btns {
+  position: sticky;
+  top: $contentsPaddingN;
+  z-index: 10;
+  background-color: #fff;
+  border-bottom: 1px solid #444;
+}
+
+.btn-search {
+  .v-btn--variant-outlined {
+    border-width: 2px;
+  }
+  .v-btn__content {
+    width: 100%;
+  }
+  .text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include fontWeight(semibold);
+    font-size: toRem(16);
+    color: $black;
+    width: inherit;
+  }
+}
+
+.sorting-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.btn-select {
+  &.v-btn--variant-outlined {
+    background: #f7f7f7;
+    border-color: #eee;
+  }
+  .v-btn__content {
+    @include fontWeight(400);
+    font-size: toRem(16);
+    color: #888;
+  }
+}
+.btn-grey {
+  &.v-btn {
+    background-color: #f2f4f6;
+    color: #0066ff;
+  }
+}
+
+.search-area {
+  display: grid;
+  grid-template-columns: 1fr 44px;
+  .btn {
+    font-size: toRem(16);
+    align-self: center;
+    text-align: right;
+  }
+}
+
+.list-faq {
+  font-family: var(--font-primary);
+  color: #444;
+  li {
+    &:not(:last-child) {
+      border-bottom: 1px solid #ccc;
+    }
+    padding-block: toRem(16);
+    &.item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &-2 {
+        display: grid;
+        grid-template-columns: 1fr 60px;
+        .v-btn {
+          justify-self: end;
+        }
+      }
+    }
+    .text-tit {
+      @include fontWeight(semibold);
+      color: #444;
+      &-02 {
+        @include fontWeight(semibold);
+        font-size: toRem(16);
+        color: $black;
+        align-self: center;
+      }
+    }
+    .text-point {
+      @include fontWeight(semibold);
+      color: $black;
+    }
+  }
+}
+
+.list-circle {
+  font-size: toRem(16);
+  color: #666;
+  li {
+    display: grid;
+    grid-template-columns: toRem(12) auto;
+    margin-block-end: toRem(4);
+    &::before {
+      content: '';
+      display: inline-block;
+      width: toRem(4);
+      height: toRem(4);
+      background-color: #666;
+      border-radius: 50%;
+      margin-top: toRem(10);
+    }
+  }
+}
+
+.customer-btns {
+  display: grid;
+  gap: toRem(32) 0;
+}
+.btn-link {
+  &.v-btn {
+    padding: 0;
+    font-size: toRem(16);
+  }
+  .v-btn__content {
+    display: grid;
+    grid-template-columns: 1fr 20px;
+    width: 100%;
+    @include fontWeight(semibold);
+    text-align: left;
+    &::after {
+      content: '';
+      height: 20px;
+      @include bgimg('icon-arrow-right');
+    }
+  }
+}
+.btn-list-block {
+  &.v-btn {
+    --v-btn-height: 56px;
+    justify-content: start;
+    font-size: toRem(16);
+    @include fontWeight(400);
+    line-height: 24px;
+    padding-inline: 0;
+  }
+}
+
+.box-reward {
+  display: flex;
+  justify-content: space-between;
+}
+
+.box-grey {
+  &.v-card {
+    background: var(--v-theme-gray-1);
+    padding: toRem(16);
+    .v-card-title {
+      @include fontWeight(semibold);
+      font-size: inherit;
+      line-height: inherit;
+      padding: 0 0 8px 0;
+    }
+    .cont {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: inherit;
+      padding: 0;
+      .text-tel {
+        @include fontWeight(semibold);
+        font-size: toRem(18);
+        line-height: toRem(28);
+      }
+    }
+  }
+}
+
+.box-rounded {
+  padding: toRem(28) toRem(16);
+  border-radius: toRem(16);
+  border: 1px solid #eee;
+  font-size: toRem(18);
+  .child {
+    display: flex;
+    margin-block-end: toRem(4);
+    @include fontWeight(semibold);
+    line-height: toRem(26);
+  }
+  .text-value {
+    @include fontWeight(400);
+    font-size: toRem(16);
+    line-height: toRem(24);
+    color: #287eff;
+  }
+}
+
+.point-area {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sorting-data {
+  display: flex;
+  justify-content: space-between;
+  .text-date {
+    font-size: toRem(14);
+    color: #666;
+  }
+}
+
+.tooltip-area {
+  .btn-text {
+    color: #444;
+    .v-btn__append {
+      margin-inline-start: 0;
+    }
+  }
+}
+.tooltip-box {
+  @include position(
+    $ps: absolute,
+    $t: toRem(24),
+    $b: null,
+    $l: 0,
+    $r: null,
+    $zi: 10
+  );
+  border-radius: toRem(16);
+  background-color: #444;
+  font-size: toRem(14);
+  color: #f8f8f8;
+  letter-spacing: toRem(0.14);
+  line-height: toRem(20);
+  padding: toRem(17) toRem(12) toRem(17) toRem(20);
+  display: grid;
+  grid-template-columns: auto 36px;
+  .btn-close {
+    position: relative;
+    z-index: 20;
+    margin-top: toRem(-5);
+    font-size: toRem(20);
+    color: #fff;
+  }
+}
+
+.text-point {
+  &.type-1 {
+    font-family: var(--font-secondary);
+    font-size: toRem(26);
+    @include fontWeight(bold);
+  }
+}
+.text-day {
+  font-size: toRem(14);
+  color: #888;
+}
+
+// line없는 v-select
+.select-default {
+  &.v-select {
+    &.v-input--density-comfortable {
+      font-size: toRem(18);
+      line-height: toRem(26);
+      .v-field__input {
+        @include fontWeight(semibold);
+      }
+    }
+    .v-field {
+      --v-input-control-height: 26px;
+      --v-input-chips-margin-top: 0;
+      --v-input-chips-margin-bottom: 0;
+      --v-field-padding-start: 0;
+      --v-field-padding-end: 0;
+      --v-input-padding-top: 0;
+      --v-field-padding-bottom: 0;
+      --v-field-border-width: 0;
+      --v-field-padding-after: 0;
+      padding-inline-end: 0;
+      .v-label.v-field-label {
+        margin-inline-start: var(--v-field-padding-start);
+      }
+      .v-field__input {
+        color: $black;
+      }
+      .v-field__append-inner {
+        margin-top: toRem(-1);
+        .mdi-menu-down::before {
+          content: '\F0140';
+        }
+      }
+      .v-field__outline {
+        --v-field-border-width: inherit;
+        &::after {
+          border: var(--v-field-border-width);
+        }
+      }
+    }
+    .v-select__selection {
+      max-width: fit-content;
+    }
+  }
+}
+
+.tab-line {
+  .v-slide-group__container {
+    border-bottom: 1px solid #dde1e4;
+  }
+  .v-tab {
+    font-size: toRem(16);
+    color: #8c949e;
+    &.v-tab {
+      min-width: auto;
+    }
+    & + .v-tab {
+      margin-left: toRem(28);
+    }
+    &.v-tab--selected {
+      @include fontWeight(semibold);
+      color: $black;
+      .v-tab__slider {
+        height: 4px;
+        background-color: $black;
+      }
+    }
+  }
+  .v-btn--size-default {
+    padding: 0;
+  }
+}
+
+.text-info-grey {
+  font-size: toRem(14);
+  color: #666;
+  line-height: toRem(20);
+  &.type-2 {
+    color: #888;
+  }
+}
+.text-info-black {
+  font-size: toRem(18);
+  @include fontWeight(semibold);
+}
+
+// picker
+.calendar-input {
+  display: grid;
+  grid-template-columns: 1fr 34px 1fr;
+  gap: 6px 0;
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  height: 84px;
+  padding: 15px 16px;
+  .v-label {
+    align-self: start;
+    grid-area: 1 / 1 / 2 / 4;
+    font-size: toRem(14);
+    @include fontWeight(light);
+    line-height: 20px;
+  }
+  .v-input {
+    &.v-input--density-compact {
+      --v-input-control-height: 26px;
+      --v-input-padding-top: 0;
+      --v-input-chips-margin-top: 0;
+      --v-input-chips-margin-bottom: 0;
+    }
+    .v-field__input {
+      font-size: toRem(18);
+      &::placeholder {
+        font-size: inherit;
+        opacity: 1;
+        color: #ccc;
+        text-overflow: ellipsis;
+        line-height: toRem(26);
+      }
+    }
+  }
+  .v-field__append-inner {
+    --v-input-padding-top: -2px;
+  }
+  .mdi-calendar {
+    width: 20px;
+    height: 20px;
+    @include bgimg('icon-calendar');
+    font-size: unset !important;
+    align-self: self-start;
+    &::before {
+      content: '';
+    }
+  }
+  .btn-calendar {
+    --v-btn-height: 26px;
+    &.v-btn.v-btn--density-compact {
+      height: var(--v-btn-height);
+    }
+  }
+  .text {
+    font-weight: 500;
+    font-size: toRem(18);
+    color: #ccc;
+  }
+}
+
+.calendar-head {
+  text-align: center;
+  .container {
+    display: inline-grid;
+    grid-template-columns: toRem(24) 1fr toRem(24);
+    align-items: center;
+    line-height: toRem(26);
+  }
+  .btn {
+    width: toRem(20);
+    .v-btn__content {
+      .v-icon::before {
+        font-size: toRem(32);
+        color: $black;
+      }
+    }
+    &.v-btn--size-default {
+      padding: 0;
+    }
+  }
+}
+.calendar-body {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: [row1]toRem(28) repeat(5, 1fr);
+  height: toRem(298);
+  text-align: center;
+  .weekday {
+    font-size: toRem(13);
+    color: #666;
+    line-height: 20px;
+  }
+  .days {
+    display: grid;
+    grid-template-rows: 1fr toRem(16);
+    height: 100%;
+    .text {
+      align-self: center;
+      @include fontWeight(semibold);
+      color: $black;
+      // height: calc(100% - toRem(16));
+    }
+    .state {
+      display: inline-flex;
+      justify-content: center;
+      .v-avatar {
+        &:not(:only-child) {
+          margin-inline-start: 3px;
+        }
+        &:not(:last-child) {
+          margin-inline-end: 3px;
+        }
+      }
+    }
+  }
+}
+.calendar-info {
+  display: flex;
+  justify-content: end;
+  align-items: start;
+  height: 44px;
+  font-size: toRem(13);
+  color: #666;
+  margin-inline: $contentsPaddingN;
+  padding-inline: $contentsPadding;
+  border-bottom: 1px solid #e8e8e8;
+  .state {
+    display: grid;
+    grid-template-columns: toRem(16) auto;
+    align-items: center;
+    .v-avatar {
+      margin-inline: auto;
+    }
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
+  }
+}
+
+.switch-area {
+  display: grid;
+  grid-template-columns: auto toRem(56);
+  align-items: center;
+}
+
+.btn-sorting {
+  &.v-btn {
+    &.v-btn--selected {
+      @include fontWeight(semibold);
+      background-color: #f3f7ff;
+      color: $black;
+    }
+  }
+}

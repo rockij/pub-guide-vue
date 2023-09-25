@@ -1,0 +1,22 @@
+<svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="icon_timeline_medical_32">
+<circle id="Oval" cx="19" cy="19" r="19" fill="#64C1D2"/>
+<g id="Mask group">
+<mask id="mask0_3224_12438" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="38" height="38">
+<circle id="Oval_2" cx="19" cy="19" r="19" fill="#64C1D2"/>
+</mask>
+<g mask="url(#mask0_3224_12438)">
+<g id="ic">
+<g id="Group 1261165697">
+<rect id="Rectangle 17260" x="9.58862" y="8.14978" width="18.8239" height="22.0976" rx="4" fill="white"/>
+<path id="Rectangle 17261" d="M13.6809 7.74915H24.3205C24.3205 9.10516 23.2212 10.2044 21.8652 10.2044H16.1362C14.7802 10.2044 13.6809 9.10516 13.6809 7.74915Z" fill="#BCBCBC"/>
+</g>
+<g id="Group 1261165698">
+<path id="Vector" d="M28.1477 24.38L31.7665 27.9992" stroke="#147182" stroke-width="2" stroke-miterlimit="10"/>
+<circle id="Ellipse 336" cx="23.8938" cy="19.8942" r="5.89507" fill="#E7FCFF" fill-opacity="0.5" stroke="#147182" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</svg>

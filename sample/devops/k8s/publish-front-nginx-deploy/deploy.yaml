@@ -1,0 +1,74 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    devops.type: publish-front-nginx-deploy
+  name: dep-publish-front-nginx
+  namespace: stratodev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      devops.type: publish-front-nginx-deploy
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        devops.type: publish-front-nginx-deploy
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: devops.type
+                operator: In
+                values:
+                - publish-front-nginx-deploy
+            topologyKey: kerbernetes.io/hostname
+      containers:
+      - image: harbor-stdev.kbhc.co.kr/publish/publish_front_nginx:23.09.25.07.37.32-SNAPSHOT
+        name: pod-publish-front-nginx
+        ports:
+        - containerPort: 80
+          name: port-80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    prometheus.io/path: /actuator/prometheus
+    prometheus.io/port: '80'
+    prometheus.io/scrape: 'true'
+  name: svc-publish-front-nginx
+  namespace: stratodev
+spec:
+  type: ClusterIP
+  ports:
+  - name: port-80
+    port: 80
+    targetPort: 80
+  selector:
+    devops.type: publish-front-nginx-deploy
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations: {}
+  name: ing-publish-front-nginx
+  namespace: stratodev
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: pub-front-stdev.kbhc.co.kr
+    http:
+      paths:
+      - backend:
+          service:
+            name: svc-publish-front-nginx
+            port:
+              number: 80
+        path: /
+        pathType: Prefix

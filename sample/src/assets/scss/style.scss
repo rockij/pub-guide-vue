@@ -1,0 +1,1042 @@
+@use 'sass:meta';
+@use 'sass:map';
+@use 'function';
+@import url('@/assets/base.css');
+@import 'mixin';
+@import 'font';
+@import 'function';
+@import 'variables';
+
+html,
+body {
+  height: 100%;
+}
+
+%defaultPadding {
+  padding: toRem(24);
+}
+$contentsPadding: toRem(24);
+$contentsPaddingN: toRem(-24);
+
+body {
+  color: $black;
+  font-family: var(--font-primary);
+  font-size: toRem(16);
+  line-height: toRem(24);
+  letter-spacing: -0.2px;
+}
+
+#app {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+#mainWrap {
+  overflow-x: hidden;
+  // height: $vheight;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.contents {
+  display: block;
+  // flex-direction: column;
+  min-height: 100%;
+  @extend %defaultPadding;
+  // height: calc($vheight - 64px);
+}
+
+.header {
+  &.v-app-bar.v-toolbar:not(.v-toolbar--flat) {
+    box-shadow: none;
+  }
+  .v-toolbar__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .page-title {
+    font-size: toRem(18);
+  }
+  .mdi-chevron-left {
+    &::before {
+      font-size: toRem(40);
+    }
+  }
+
+  .mdi-menu {
+    &::before {
+      font-size: toRem(32);
+    }
+  }
+}
+
+.slideLayer {
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 10;
+  width: 90%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: $white;
+}
+
+.v-main {
+  display: flex;
+  flex-direction: column;
+}
+
+// title영역
+.title-area {
+  &.underline {
+    border-bottom: 1px solid #444;
+  }
+  .subTit-01 {
+    color: #26282c;
+    font-family: var(--font-secondary);
+    font-size: toRem(26);
+    @include fontWeight(bold);
+    line-height: toRem(34);
+    word-break: keep-all;
+  }
+  .desc {
+    //padding-top: 16px;
+    color: #26282c;
+    font-size: toRem(16);
+  }
+  .slink {
+    @include v-btn-reset;
+    margin-top: toRem(8);
+    border-radius: toRem(8);
+    background-color: #f2f4f6;
+    padding: toRem(8) toRem(12);
+    font-size: toRem(14);
+    color: #06c;
+  }
+}
+.title-area2 {
+  display: flex;
+  align-items: center;
+  .v-btn {
+    @include v-btn-reset;
+  }
+  .float-right {
+    margin-left: auto;
+  }
+  .btn-go {
+    color: #888;
+    text-decoration: underline;
+  }
+}
+// title
+.tit-01 {
+  &.color {
+    color: #444;
+  }
+}
+.tit-link {
+  .v-btn {
+    padding: 0;
+    font-size: inherit;
+    font-weight: inherit;
+    border-radius: 0;
+    display: flex;
+    justify-content: flex-start;
+    &.v-btn--density-default {
+      height: auto;
+    }
+    &::after {
+      content: '';
+      @include arrow(toRem(9), toRem(1.5), #26282c);
+      opacity: 1;
+      position: static;
+      margin-left: toRem(14);
+    }
+    &.v-btn--block {
+      .v-btn__content {
+        width: 100%;
+        justify-content: start;
+      }
+    }
+  }
+}
+
+// 리스트영역 내 뱃지
+.badge {
+  display: inline-block;
+  padding: 0 6px;
+  border-radius: 4px;
+  font-size: toRem(13);
+  line-height: toRem(24);
+  box-shadow: inset 0 0 0 1px #0f61ff;
+  color: #0f61ff;
+  &.waiting {
+    color: #888;
+    box-shadow: none;
+    background-color: rgba(102, 102, 102, 0.06);
+  }
+  &.ing {
+    box-shadow: none;
+    background-color: rgba(15, 97, 255, 0.06);
+    color: rgba(15, 97, 255, 1);
+  }
+}
+
+// 리스트영역 내 날짜, 상태 정보
+.info-group {
+  display: flex;
+  align-items: center;
+  padding-top: toRem(8);
+  font-size: toRem(14);
+  line-height: toRem(20);
+  color: #666;
+  .date {
+    display: inline-block;
+    vertical-align: middle;
+    &::after {
+      margin: -2px 10px 0;
+      display: inline-block;
+      content: '';
+      width: 1px;
+      height: toRem(12);
+      background-color: #666;
+    }
+  }
+  .type {
+    display: inline-block;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  &:only-child {
+    &::after {
+      content: none;
+    }
+  }
+}
+
+// v-textfield + v-textarea 기본형
+.textfield-default {
+  .mdi-magnify {
+    &::before {
+      content: '';
+      @include bgimg('icon-srch');
+      background-position: 50% 50%;
+      width: toRem(24);
+      height: toRem(24);
+    }
+  }
+  .v-field--appended {
+    padding-inline-end: toRem(17);
+  }
+  .v-input__control {
+    &:focus-within + .v-input__details {
+      .v-messages {
+        &::before {
+          display: inline-block;
+        }
+      }
+    }
+    .v-field--variant-outlined {
+      --v-field-padding-top: 0;
+      --v-field-padding-end: 0;
+      .v-field__field {
+        .v-field__input {
+          height: 84px;
+          padding: 41px 16px 15px;
+          display: flex;
+          flex-direction: row-reverse;
+          justify-content: space-around;
+          align-items: flex-start;
+          font-size: toRem(18);
+          line-height: 26px;
+          &::placeholder {
+            opacity: 1;
+            color: #ccc;
+            text-overflow: ellipsis;
+            font-family: var(--font-primary);
+            font-style: normal;
+            line-height: 26px;
+          }
+          .input-count {
+            align-self: flex-end;
+            font-size: toRem(15);
+          }
+        }
+        .v-field-label {
+          visibility: visible;
+          top: 26px;
+          font-size: toRem(14);
+          line-height: toRem(20);
+          font-weight: 300;
+          color: #666;
+        }
+      }
+      .v-field__outline {
+        border: 1px solid #cccccc;
+        border-radius: 16px;
+        .v-field__outline__start,
+        .v-field__outline__end {
+          border: 0;
+        }
+        .v-field__outline__notch {
+          .v-field-label--floating {
+            position: absolute;
+          }
+        }
+      }
+      .v-field__clearable {
+        padding-top: 27px;
+        margin-inline-end: toRem(10);
+        .mdi-close-circle::before {
+          color: #8c949e;
+        }
+      }
+    }
+  }
+  .v-input__details {
+    padding-inline-start: 0 !important;
+    padding-inline-end: 0 !important;
+    align-items: center;
+    display: none;
+    .v-messages {
+      font-size: toRem(14);
+      font-style: normal;
+      font-weight: 300;
+      line-height: toRem(20);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      &::before {
+        content: '\F0028';
+        opacity: 0;
+        font: normal normal normal 24px/1 'Material Design Icons';
+        line-height: inherit;
+        align-self: center;
+        font-size: toRem(16);
+      }
+      .v-messages__message {
+        padding-left: toRem(4);
+        line-height: toRem(20);
+      }
+    }
+  }
+  .v-text-field__suffix {
+    --v-field-padding-top: 27px;
+    --v-field-padding-end: 16px;
+    --v-input-chips-margin-top: 0;
+    @include fontWeight(semibold);
+    font-size: toRem(18);
+    line-height: 26px;
+    color: $black;
+  }
+  &.input-basic {
+    .v-input__details {
+      display: none;
+    }
+  }
+  &.v-input--error {
+    &.inputValue {
+      .v-field--error {
+        .v-field__clearable {
+          opacity: 1;
+        }
+      }
+    }
+    .v-input__control {
+      .v-field__outline {
+        border: 1px solid #ff0000 !important;
+      }
+    }
+    .v-input__details {
+      display: block;
+      .v-messages {
+        color: #f00 !important;
+        &::before {
+          animation: Caption 0.3s ease-in-out;
+          opacity: 1;
+          color: #f00 !important;
+        }
+      }
+    }
+    .v-field__field {
+      .input-count {
+        color: #f00 !important;
+      }
+    }
+  }
+  &.v-input--disabled {
+    .v-field-label {
+      color: #666;
+      opacity: 1;
+    }
+  }
+  &.input-hint {
+    .v-input__control {
+      &:focus-within + .v-input__details {
+        .v-messages {
+          &::before {
+            animation: Caption 0.3s ease-in-out;
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+  &.input-simple {
+    .v-input__control {
+      .v-field--variant-outlined {
+        .v-field__field {
+          .v-field__input {
+            height: toRem(60);
+            padding-top: 0;
+            padding-bottom: 0;
+          }
+        }
+        .v-field__clearable {
+          padding-top: 0;
+        }
+      }
+    }
+  }
+  &.v-select {
+    .v-input__control {
+      .v-field--variant-outlined {
+        .v-field__field {
+          .v-field__input {
+            flex-direction: column;
+            justify-content: flex-start;
+            font-size: toRem(18);
+          }
+        }
+      }
+    }
+    .mdi {
+      width: toRem(60);
+      margin-top: 20px;
+      &::before {
+        content: '';
+        border-width: 2px 2px 0 0;
+        border-style: solid;
+        border-color: #888;
+        width: 9px;
+        height: 9px;
+        transform: rotate(135deg);
+        position: absolute;
+      }
+    }
+  }
+  &.placeholder {
+    .v-select__selection-text {
+      color: #ccc;
+    }
+  }
+  &.v-select--active-menu {
+    .mdi {
+      margin-top: toRem(25);
+    }
+  }
+}
+
+// v-textfield 검색
+.textfield-search {
+  --clear-width: 50px;
+  &.v-input--density-default {
+    --v-input-control-height: 24px;
+    --v-input-padding-top: 9px;
+    .v-field--variant-outlined {
+      --v-field-padding-bottom: 9px;
+    }
+  }
+  .v-field--prepended {
+    padding-inline-start: 16px;
+  }
+  .v-field--appended {
+    padding-inline-end: 16px;
+  }
+  .v-field__clearable {
+    position: absolute;
+    top: 0;
+    right: -60px;
+    justify-content: end;
+    display: flex !important;
+    margin-inline-end: 0;
+    width: 50px;
+    height: 100%;
+    transition: none;
+    & > .v-icon {
+      width: 100%;
+      height: 100%;
+      &::before {
+        content: '';
+        font-family: var(--font-primary);
+        font-size: toRem(16);
+        color: $black;
+      }
+    }
+  }
+  .v-field__prepend-inner {
+    .v-icon {
+      width: 20px;
+      height: 20px;
+    }
+    .mdi-magnify {
+      &::before {
+        content: '';
+        @include bgimg('icon-search2');
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  .v-field__outline {
+    color: #ccc;
+    --v-field-border-opacity: 1;
+  }
+  .v-text-field .v-field--no-label input,
+  .v-text-field .v-field--active input {
+    @include fontWeight(semibold);
+  }
+}
+
+.textarea-basic {
+  .v-input__control {
+    .v-field--variant-outlined {
+      .v-field__field {
+        .v-field__input {
+          padding: 14px 24px 14px 16px;
+          height: toRem(200);
+          font-size: initial;
+          letter-spacing: -0.032px;
+          &::placeholder {
+            opacity: 1;
+            color: #ccc;
+            font-size: toRem(16);
+            line-height: toRem(23);
+            letter-spacing: -0.032px;
+          }
+        }
+      }
+    }
+  }
+  .v-input__details {
+    padding-top: 0;
+    position: relative;
+    display: flex !important;
+    top: toRem(-30);
+    right: toRem(12);
+    min-height: 0;
+    .v-messages {
+      display: none;
+    }
+  }
+}
+
+@keyframes Caption {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// 체크박스 기본형
+.checked-agree {
+  .v-input__details {
+    display: none;
+  }
+  .v-selection-control__input > .v-icon {
+    opacity: 1;
+  }
+  .v-selection-control {
+    .v-label {
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+  .mdi-checkbox-blank-outline::before {
+    content: '';
+    width: toRem(24);
+    height: toRem(24);
+    font-size: toRem(18);
+    @include bgimg('icon-checked-gray');
+    background-size: 100% 100%;
+  }
+  .mdi-checkbox-marked::before {
+    content: '';
+    width: toRem(24);
+    height: toRem(24);
+    @include bgimg('icon-checked-yellow');
+    background-size: 100% 100%;
+  }
+  .mdi-chevron-right::before {
+    content: '보기';
+    font-size: toRem(14);
+    @include fontWeight;
+    color: #ccc;
+  }
+  .v-selection-control__input {
+    width: toRem(24);
+    height: toRem(24);
+    &::before {
+      background-color: none;
+    }
+    &:hover::before {
+      opacity: 0 !important;
+    }
+  }
+  .v-selection-control--density-default {
+    --v-selection-control-size: 34px; //toRem 안먹음
+    .v-selection-control__wrapper {
+      justify-content: start;
+    }
+  }
+  .v-label {
+    opacity: 1;
+  }
+  // sub 체크박스
+  &.checked-sub {
+    $checkicon-size: toRem(20);
+    .v-checkbox-btn {
+      height: toRem(52);
+    }
+    .mdi-checkbox-blank-outline::before {
+      content: '';
+      width: $checkicon-size;
+      height: $checkicon-size;
+      font-size: toRem(16);
+      background-size: 100% auto;
+    }
+    .mdi-checkbox-marked::before {
+      width: $checkicon-size;
+      height: $checkicon-size;
+      background-size: 100% auto;
+    }
+  }
+  // 전체동의 체크박스
+  &.checked-all {
+    .v-label {
+      font-size: toRem(18);
+    }
+    .v-checkbox-btn {
+      height: toRem(58);
+      padding-right: toRem(16);
+      padding-left: toRem(16);
+      border-radius: toRem(8);
+      background-color: #f8f8f8;
+      @include fontWeight(semibold);
+    }
+    .v-selection-control--dirty {
+      background-color: #fff;
+      border: 1px solid #fc0;
+      box-shadow: 0 toRem(4) toRem(4) 0 rgba(98, 98, 98, 0.1);
+    }
+  }
+}
+
+// 전체동의 그룹
+.agree-group {
+  .agree-items {
+    padding: 0 toRem(16);
+    .v-selection-control {
+      min-height: toRem(44);
+    }
+  }
+}
+
+// radio 기본형
+// .radio-group-basic {
+//   .v-input__details {
+//     display: none;
+//   }
+// }
+.radio-basic {
+  gap: toRem(10);
+  &.v-selection-control--density-default {
+    --v-selection-control-size: 52px;
+  }
+  .v-selection-control__wrapper {
+    width: toRem(24);
+    justify-content: flex-start;
+  }
+  .v-label--clickable {
+    opacity: 1;
+    color: #26282c;
+  }
+  .v-selection-control__input {
+    width: toRem(24);
+    height: toRem(24);
+  }
+  .mdi-radiobox-blank {
+    &::before {
+      color: #aaaaaa;
+    }
+  }
+  .mdi-radiobox-marked {
+    &::before {
+      content: '';
+      @include bgimg('icon-radio');
+      background-size: 100% 100%;
+      width: toRem(24);
+      height: toRem(24);
+    }
+  }
+}
+
+// switch 기본형
+.switch-default {
+  --v-medium-emphasis-opacity: 1;
+  &.v-switch {
+    .v-selection-control__input {
+      width: toRem(24);
+      height: toRem(24);
+      transform: translateX(-10px);
+    }
+    .v-selection-control--dirty {
+      .v-selection-control__input {
+        transform: translateX(10px);
+      }
+    }
+  }
+  .v-selection-control__wrapper {
+    width: toRem(54);
+    height: toRem(32);
+  }
+  .v-switch__track {
+    background-color: #e9e9eb;
+    width: toRem(54);
+    height: toRem(32);
+    opacity: 1;
+    border-radius: 20px;
+  }
+  .v-switch__thumb {
+    background-color: #fff !important;
+    width: toRem(24);
+    height: toRem(24);
+  }
+  &.v-input--density-default {
+    --v-input-control-height: auto;
+    --v-input-padding-top: 0;
+  }
+}
+
+// switch label 유형
+.switch-text {
+  .v-selection-control--dirty {
+    .v-label {
+      left: toRem(5);
+      right: auto;
+    }
+  }
+  .v-label {
+    text-transform: uppercase;
+    padding-inline-start: 0 !important;
+    position: absolute;
+    //width: 40px !important;
+    //height: 40px !important;
+    left: toRem(29);
+    font-size: toRem(12);
+    font-weight: 600;
+    letter-spacing: -0.016px;
+    color: #666;
+  }
+  // .v-input--density-default {
+
+  // }
+}
+
+// bottom 버튼 영역
+.btn-bottom {
+  height: toRem(100);
+  position: relative;
+  z-index: 100;
+  .btn-area {
+    padding: 34px 24px 10px;
+    gap: toRem(7);
+    @include position($ps: fixed, $t: null, $b: 0, $l: 0);
+    width: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 1.07%,
+      rgba(255, 255, 255, 0.6) 14.37%,
+      #fff 23.88%
+    );
+  }
+  .v-btn {
+    flex: 1;
+    border-radius: toRem(16);
+
+    &:only-child {
+      width: 100%;
+    }
+    &.btn-cancel {
+      background-color: #f3f7ff;
+    }
+    &.btn-summit {
+      background-color: #ffcc00;
+      &.v-btn--disabled {
+        background-color: #eee;
+        opacity: 1;
+        .v-btn__content {
+          color: #aaa;
+        }
+      }
+    }
+  }
+  .v-btn__content {
+    color: #222;
+    text-align: center;
+    font-size: toRem(16);
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.032px;
+  }
+}
+
+// .btn-double : default 두개(백그라운드 없음, fixed 없음)
+.btn-double {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+  .v-btn {
+    flex: 1;
+    border-radius: toRem(8);
+    &.btn-cancel {
+      background-color: #fff;
+      border: 1px solid #222;
+    }
+    &.btn-summit {
+      background-color: #ffcc00;
+      &.v-btn--disabled {
+        background-color: #eee;
+        opacity: 1;
+        .v-btn__content {
+          color: #aaa;
+        }
+      }
+    }
+    &.btn-default {
+      background-color: #eee;
+      color: #aaa;
+      &.selected {
+        background-color: #ffcc00;
+        color: #222;
+      }
+    }
+  }
+  .v-btn__content {
+    color: inherit;
+    text-align: center;
+    font-size: toRem(14);
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.032px;
+  }
+}
+
+// bottom 영역 구분선
+.section-page {
+  position: relative;
+  padding: toRem(40) $contentsPadding;
+  margin-inline: -$contentsPadding;
+  &::before {
+    content: '';
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: toRem(8);
+    z-index: 1;
+    background-color: #eee;
+  }
+  &.bg {
+    background-color: #e9eff1;
+    &::before {
+      display: none;
+    }
+  }
+}
+
+.report-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-report {
+  margin-block-start: 16px;
+  .v-card-title {
+    display: flex;
+    justify-content: space-between;
+    background-color: #e9eff1;
+    padding: toRem(16);
+    line-height: toRem(24) !important;
+  }
+  .text-date {
+    font-size: toRem(13);
+  }
+  .v-card-item {
+    border: 1px solid #e9eff1;
+    border-radius: inherit;
+    border-start-start-radius: 0;
+    border-start-end-radius: 0;
+    padding: toRem(16);
+  }
+  .btn-area {
+    display: flex;
+    justify-content: space-between;
+    gap: 0 toRem(16);
+    .v-btn {
+      background-color: transparent;
+      width: 20px;
+      height: 20px;
+      align-self: center;
+    }
+  }
+}
+.chip-default {
+  &.v-chip {
+    &:not(.v-chip--variant-outlined) {
+      background-color: #f8f8f8;
+    }
+    color: #666;
+    &.v-chip--size-small {
+      font-size: toRem(13);
+      padding-inline: 6px;
+    }
+  }
+}
+.text-dot {
+  display: grid;
+  grid-template-columns: 12px 1fr;
+  &::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background-color: #444;
+    border-radius: 50%;
+    align-self: center;
+  }
+  &.success {
+    &::before {
+      background-color: #0eb05e;
+    }
+  }
+}
+
+.box-info {
+  &.v-card {
+    background-color: #eef6ff;
+  }
+}
+
+// divider
+.divider {
+  margin-inline: $contentsPaddingN;
+  opacity: 1 !important;
+  border-color: #eee;
+}
+
+//size class 생성
+@for $i from 1 through 100 {
+  @each $remName, $remValue in $remClass {
+    .#{$remName}-#{$i} {
+      &,
+      input {
+        #{$remValue}: meta.call(
+          map.get(meta.module-functions('function'), 'toRem'),
+          $i
+        ) !important;
+      }
+    }
+  }
+}
+
+// title
+@for $i from 1 through 10 {
+  $default: 14;
+  .tit-0#{$i} {
+    $default: (2 * $i) + $default;
+    font-weight: 600;
+    font-size: meta.call(
+      map.get(meta.module-functions('function'), 'toRem'),
+      $default
+    );
+    padding-bottom: 10px;
+    // font-size: 16px;
+  }
+}
+
+// loading
+.loading-dot {
+  display: inline-flex;
+  box-sizing: content-box;
+  min-width: toRem(52);
+  padding: toRem(18);
+  background-color: #fff;
+  border-radius: toRem(16);
+  .dot {
+    display: inline-block;
+    width: toRem(12);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    animation: shadow-dot 1.25s infinite linear forwards;
+  }
+}
+@keyframes shadow-dot {
+  0% {
+    background: #000;
+    box-shadow: 20px 0 #0002, 40px 0 #0002;
+  }
+  33% {
+    background: #0002;
+    box-shadow: 20px 0 #000, 40px 0 #0002;
+  }
+  66% {
+    background: #0002;
+    box-shadow: 20px 0 #0002, 40px 0 #000;
+  }
+  100% {
+    background: #000;
+    box-shadow: 20px 0 #0002, 40px 0 #0002;
+  }
+}
+
+.btn-area2 {
+  display: flex;
+  width: 100%;
+  gap: toRem(8);
+  .v-btn {
+    color: #222;
+    min-width: auto;
+    max-width: none;
+    &.skip {
+      background-color: #fc0;
+    }
+    &.cancel {
+      background-color: #f3f7ff;
+    }
+  }
+}
+
+// 추가
+@media (max-width: 280px) {
+  html {
+    font-size: toRem(13) !important;
+  }
+}
+
+@import './components.scss';
+@import './sub01.scss';
+@import './sub02.scss';
+@import './sub03.scss';
+@import './sub04.scss';
