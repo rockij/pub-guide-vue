@@ -1,0 +1,90 @@
+// px -> rem 자동계산
+@function rem($value) {
+  @return calc(($value / 10) * 1rem);
+}
+
+$breakpoint-min: 280px;
+$breakpoint-max: 586px;
+
+// 핸드폰 사이즈 전체
+@mixin media-phone {
+  @media (min-width: #{$breakpoint-min}) and (max-width: #{$breakpoint-max - 1px}) {
+    @content;
+  }
+}
+// 작은폰
+@mixin media-phone-small {
+  @media (min-width: #{$breakpoint-min}) and (max-width: #{320 - 1px}) {
+    @content;
+  }
+}
+
+// 다크모드
+@mixin media-dark {
+  @media (prefers-color-scheme: dark) {
+    @content;
+  }
+}
+
+// @include bgi('url', '이미지종류', '반복', '사이즈');
+@mixin bgi($name, $path: '@/assets/images/', $format: 'svg', $repeat: no-repeat, $size: 100% auto) {
+  background-image: url('#{$path}#{$name}.#{$format}');
+  background-repeat: $repeat;
+  background-size: $size;
+}
+
+/* 
+  가로스크롤 @include media-scroll('박스간 간격', '박스 가로사이즈', '박스 세로사이즈')
+  @include media-scroll(toRem(8), auto, toRem(36));
+*/
+@mixin media-scroll($gap, $col, $row, $pd: $gap) {
+  display: grid;
+  gap: $gap;
+  grid-auto-flow: column;
+  grid-auto-columns: $col;
+  grid-auto-rows: $row;
+  overflow-x: auto;
+  //한칸씩 이동하고 싶다면
+  //scroll-snap-type: inline mandatory;
+  scroll-padding-inline: $pd;
+  align-items: center;
+  scroll-behavior: smooth;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  > * {
+    scroll-snap-align: start;
+  }
+}
+
+/*
+  말줄임 표시
+  1줄: @include text-overflow;
+  1줄이상: @include text-overflow(2);
+*/
+@mixin text-overflow($linetype: 1) {
+  overflow: hidden;
+  @if $linetype == 1 {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box !important;
+    -webkit-line-clamp: $linetype;
+    -webkit-box-orient: vertical;
+  }
+}
+/* 
+  말줄임 라인 우축에 추가 요소가 있는 경우 말줄임 감싸고 있는 태그에 적용
+  @include text-overflow-box;
+*/
+@mixin text-overflow-box {
+  display: flex;
+  min-width: 0;
+  .option_el {
+    flex-shrink: 0;
+  }
+}
+
+@mixin ls($value: 1) {
+  letter-spacing: calc($value * 0.01rem);
+}

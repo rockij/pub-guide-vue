@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="Icon_Common_Icon24_Icon24_Filter" data-name="Icon / Common / Icon24 / Icon24_Filter" transform="translate(-891 -2587)">
+    <rect id="사각형_8486" data-name="사각형 8486" width="24" height="24" transform="translate(891 2587)" fill="rgba(255,167,167,0)"/>
+    <g id="그룹_8643" data-name="그룹 8643" transform="translate(-530 375.5)">
+      <line id="선_89" data-name="선 89" x2="16" transform="translate(1425 2217.5)" fill="none" stroke="#323e5d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"/>
+      <line id="선_90" data-name="선 90" x2="16" transform="translate(1425 2223.5)" fill="none" stroke="#323e5d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"/>
+      <line id="선_91" data-name="선 91" x2="16" transform="translate(1425 2229.5)" fill="none" stroke="#323e5d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"/>
+      <g id="타원_835" data-name="타원 835" transform="translate(1427 2215.5)" fill="rgba(255,255,255,0)" stroke="#323e5d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75">
+        <circle cx="2" cy="2" r="2" stroke="none"/>
+        <circle cx="2" cy="2" r="1.125" fill="none"/>
+      </g>
+      <g id="타원_836" data-name="타원 836" transform="translate(1434 2221.5)" fill="rgba(255,255,255,0)" stroke="#323e5d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75">
+        <circle cx="2" cy="2" r="2" stroke="none"/>
+        <circle cx="2" cy="2" r="1.125" fill="none"/>
+      </g>
+      <g id="타원_837" data-name="타원 837" transform="translate(1427 2227.5)" fill="rgba(255,255,255,0)" stroke="#323e5d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75">
+        <circle cx="2" cy="2" r="2" stroke="none"/>
+        <circle cx="2" cy="2" r="1.125" fill="none"/>
+      </g>
+    </g>
+  </g>
+</svg>

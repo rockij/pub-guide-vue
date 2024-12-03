@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="66" height="46" viewBox="0 0 66 46">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#001b7b"/>
+      <stop offset="1" stop-color="#3182f7"/>
+    </linearGradient>
+  </defs>
+  <g id="그룹_8642" data-name="그룹 8642" transform="translate(-265 -160)">
+    <g id="그룹_8595" data-name="그룹 8595" transform="translate(1726 2347.49) rotate(180)">
+      <rect id="사각형_8601" data-name="사각형 8601" width="56" height="34" rx="4" transform="translate(1405 2145.49)" fill="#b8cce1" opacity="0.5"/>
+      <rect id="사각형_7346" data-name="사각형 7346" width="56" height="34" rx="4" transform="translate(1405 2149.49)" fill="#b8cce1"/>
+      <rect id="사각형_8484" data-name="사각형 8484" width="56" height="34" rx="4" transform="translate(1405 2153.49)" fill="url(#linear-gradient)"/>
+      <g id="그룹_8686" data-name="그룹 8686" transform="translate(-8.681 10.901)">
+        <path id="패스_16530" data-name="패스 16530" d="M5.545,0H4.694V2.193H1.216V0H.365A.4.4,0,0,0,0,.432V5.067A.4.4,0,0,0,.365,5.5h.851V3.145H4.694V5.5h.851a.4.4,0,0,0,.366-.433V.432A.4.4,0,0,0,5.545,0" transform="translate(1425.59 2170.338) rotate(180)" fill="#fff"/>
+        <path id="패스_16531" data-name="패스 16531" d="M5.673,0H4.822V4.211L2.264.847C1.839.356,1.547,0,.867,0H0V5.067A.4.4,0,0,0,.367,5.5h.85V1.269L3.791,4.61a1.918,1.918,0,0,0,1.452.89h.794V.432A.4.4,0,0,0,5.673,0" transform="translate(1432.681 2170.338) rotate(180)" fill="#fff"/>
+      </g>
+      <rect id="사각형_8600" data-name="사각형 8600" width="56" height="2" transform="translate(1405 2159.49)" fill="#fff"/>
+      <rect id="사각형_8602" data-name="사각형 8602" width="10" height="6" rx="1" transform="translate(1445 2175.49)" fill="#fff"/>
+    </g>
+    <g id="그룹_8687" data-name="그룹 8687" transform="translate(6 2)">
+      <g id="타원_834" data-name="타원 834" transform="translate(301 180)" fill="#2674e0" stroke="#f6f8fc" stroke-width="1.5">
+        <circle cx="12" cy="12" r="12" stroke="none"/>
+        <circle cx="12" cy="12" r="11.25" fill="none"/>
+      </g>
+      <g id="Icon16_Right" transform="translate(305 184)">
+        <rect id="사각형_5617" data-name="사각형 5617" width="16" height="16" fill="none"/>
+        <path id="패스_5508" data-name="패스 5508" d="M10,5,5.05,0,0,5" transform="translate(11 3.025) rotate(90)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      </g>
+    </g>
+  </g>
+</svg>

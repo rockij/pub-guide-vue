@@ -1,0 +1,368 @@
+@import 'font';
+@import 'mixin';
+@import 'variables';
+
+// 공통스타일 & 레이아웃
+html {
+  font-size: 62.5%;
+  // scroll-behavior: smooth;
+  scroll-padding-top: var(--scroll-padding);
+}
+
+body {
+  line-height: 1.4;
+  font-size: rem(16);
+  font-family: var(--system-fontFamily-primary);
+  @include ls;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+  // &::-webkit-scrollbar {
+  //   display: none;
+  // }
+  &.isHidden {
+    overflow: hidden;
+  }
+}
+
+.blind,
+.u_skip {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
+.hidden,
+[hidden] {
+  display: none;
+}
+
+b,
+strong {
+  font-weight: 600;
+}
+
+pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+  white-space: pre-wrap;
+}
+
+a,
+button {
+  line-height: 1.4;
+}
+
+a {
+  text-decoration: none;
+}
+
+.noevent {
+  pointer-events: none;
+}
+
+.noselect {
+  user-select: none;
+}
+
+textarea {
+  display: block;
+  resize: none;
+}
+
+img[lazy='loading'] {
+  background-color: #ccc;
+}
+img[lazy='error'] {
+  /*your style here*/
+}
+img[lazy='loaded'] {
+  /*your style here*/
+}
+
+:focus {
+  // outline: none;
+}
+@supports selector(:focus-visible) {
+  :focus-visible {
+    // box-shadow: 1px 1px 5px rgba(1, 1, 0, 0.7);
+  }
+}
+
+.sticky__area {
+  @keyframes sticky-fade {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .isFixed {
+    position: fixed;
+    // top: var(--system-toolbar-height);
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    animation: sticky-fade var(--system-animation-speed) ease;
+  }
+}
+
+#header {
+  // position: fixed;
+  // left: 0;
+  // right: 0;
+  background-color: #fff;
+  padding-right: rem(12);
+  padding-left: rem(12);
+  height: var(--system-toolbar-height);
+  display: flex;
+  align-items: center;
+  h1 {
+    font-size: rem(18);
+    font-weight: 600;
+  }
+  .btn_goback {
+    width: rem(32);
+    height: rem(32);
+  }
+  .icon__arrow_back {
+    @include bgi('common/icon_header_arrow');
+  }
+}
+
+.content__px {
+  @extend %horizonPadding;
+}
+
+.section__mb {
+  margin-bottom: var(--system-spaceSection-mb);
+}
+
+// infinity slide
+.marquee {
+  //--size: 8.5rem;
+  //--gap: 1rem;
+  //--duration: 10s;
+  --scroll-start: 0;
+  --scroll-end: calc(-100% - var(--gap));
+  @keyframes marquee-scroll {
+    from {
+      transform: translateX(var(--scroll-start));
+    }
+    to {
+      transform: translateX(var(--scroll-end));
+    }
+  }
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: var(--gap);
+  &-group {
+    flex-shrink: 0;
+    display: flex;
+    gap: var(--gap);
+    min-width: 100%;
+    animation: marquee-scroll var(--duration) linear 0.1s infinite;
+    img {
+      // flex: 0 0 var(--size);
+      width: var(--size);
+    }
+  }
+  &-reverse {
+    .marquee-group {
+      animation-direction: reverse;
+      animation-delay: -3s;
+    }
+  }
+}
+
+// tabs
+[role='tab'],
+[role='tab']:focus {
+}
+[role='tab'][aria-selected='true'] {
+}
+[role='tab'][aria-selected='false'] {
+}
+[role='tabpanel'] {
+  overflow: auto;
+}
+.tabs__line {
+  display: flex;
+  margin-bottom: var(--system-spaceSection-mb);
+  [role='tab'] {
+    position: relative;
+    flex: 1;
+    display: flex;
+    height: rem(48);
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    color: var(--system-colorFont-second2);
+    &::before {
+      height: 2px;
+      background-color: currentColor;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    &[aria-selected='true'] {
+      font-weight: 700;
+      color: var(--system-colorFont-second);
+      &::before {
+        content: '';
+      }
+    }
+  }
+}
+.tabs__panel {
+  [role='tabpanel'] {
+    display: none;
+  }
+  @for $i from 0 through 10 {
+    &[data-panel='#{$i}'] {
+      [role='tabpanel'] {
+        &:nth-child(#{$i + 1}) {
+          display: block;
+        }
+      }
+    }
+  }
+}
+.tabs_sample {
+  [role='tab'],
+  [role='tab']:focus {
+    position: relative;
+    z-index: 2;
+    top: 2px;
+    margin: 0;
+    margin-top: 4px;
+    padding: 3px 1rem 4px;
+    border: 1px solid hsl(219deg 1% 72%);
+    border-bottom: 2px solid hsl(219deg 1% 72%);
+    border-radius: 5px 5px 0 0;
+    overflow: visible;
+    background: hsl(220deg 20% 94%);
+    outline: none;
+    font-weight: bold;
+  }
+  [role='tab'][aria-selected='true'] {
+    border-width: 2px;
+    border-top-width: 6px;
+    border-top-color: rgb(36 116 214);
+    border-bottom-color: hsl(220deg 43% 99%);
+    background: hsl(220deg 43% 99%);
+  }
+  [role='tab'][aria-selected='false'] {
+    border-bottom: 1px solid hsl(219deg 1% 72%);
+  }
+  [role='tabpanel'] {
+    padding: 5px;
+    border: 2px solid hsl(219deg 1% 72%);
+    border-radius: 0 5px 5px;
+    background: hsl(220deg 43% 99%);
+    min-height: 10rem;
+    overflow: auto;
+  }
+}
+
+.checkbox__group {
+  display: flex;
+  align-items: center;
+  .btn_view {
+    margin-left: auto;
+  }
+}
+
+// card (카드모양처럼 생긴 ui)
+.card__usedetail {
+  @extend %horizonPadding;
+  padding-top: rem(24);
+  padding-bottom: rem(20);
+  background-color: #f5f8fc;
+  border-radius: 12px;
+  .text_infowrap {
+    padding-left: rem(4);
+    padding-right: rem(4);
+  }
+  .stit {
+    font-size: rem(14);
+    font-weight: 600;
+    + .paybox {
+      margin-top: rem(8);
+    }
+  }
+  .paybox {
+    display: flex;
+    align-items: center;
+    .wonview {
+      @include ls(-8);
+      &,
+      strong {
+        font-weight: 700;
+      }
+      font-size: rem(28);
+      color: var(--system-colorFont-primary);
+      strong {
+        font-size: rem(32);
+      }
+    }
+    img.card {
+      margin-left: auto;
+      margin-right: rem(-10);
+    }
+    + .txtdate {
+      margin-top: rem(2);
+    }
+  }
+  .txtdate {
+    font-size: rem(14);
+    color: var(--system-colorFont-primary2);
+  }
+  .btns {
+    display: flex;
+    gap: rem(8);
+    margin-top: rem(24);
+    .btn__basic {
+      flex: 1;
+    }
+  }
+}
+
+// 테스트후 삭제
+.test_media_scroll {
+  @include media-scroll(rem(8), rem(50), rem(50));
+  > span {
+    background-color: #ccc;
+    height: 100%;
+  }
+}
+.test_text_overflow1 {
+  @include text-overflow;
+  &_wrap {
+    @include text-overflow-box;
+  }
+}
+.test_text_overflow2 {
+  @include text-overflow(2);
+}
+
+@import './components.scss'; //컴포넌트
+@import './main.scss'; //메인
+@import './usedetail.scss'; //이용내역
+@import './price.scss'; //대금결제
+@import './mycard.scss'; //내카드관리
+@import './myinfo.scss'; //내정보관리
+@import './benefit.scss'; //혜택
+@import './payment.scss'; //결제
+@import './finance.scss'; //금융
+@import './living.scss'; //생활편의
+@import './card.scss'; //카드
+@import './voucher.scss'; //공공&바우처
+@import './customer.scss'; //고객센터
+@import './status.scss'; //STATUS

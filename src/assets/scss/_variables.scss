@@ -1,0 +1,42 @@
+:root {
+  color-scheme: light dark;
+
+  --system-fontFamily-primary: Pretendard;
+
+  --system-colorFont-primary: #206fdb;
+  --system-colorFont-primary2: #323e5d;
+  --system-colorFont-second: #222;
+  --system-colorFont-second2: #767676;
+  --system-colorFont-disabled: var(--system-colorFont-second);
+  --system-colorBg-disabled: #f6f6f6;
+  --system-colorFont-error: #e2453a;
+  --system-colorBg-skip: var(--system-colorFont-primary);
+  --system-colorFont-skip: #fff;
+  --system-colorBg-cancel: #e6ecf5;
+  --system-colorFont-cancel: #6c798e;
+  --system-colorTextfield-border: #bbb;
+
+  --system-spaceContent-px: 2rem;
+  --system-spaceContent-pb: 6.4rem;
+  --system-spaceSection-mb: 3.2rem;
+
+  --system-animation-speed: 0.3s;
+  --system-toolbar-height: 64px; // id="header"
+}
+
+// @extend %contentPadding;
+%contentPadding {
+  padding: rem(20) var(--system-spaceContent-px) rem(16);
+}
+
+// @extend %horizonPadding;
+%horizonPadding {
+  padding-right: var(--system-spaceContent-px);
+  padding-left: var(--system-spaceContent-px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: #222;
+  }
+}
