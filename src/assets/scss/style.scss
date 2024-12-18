@@ -112,15 +112,16 @@ img[lazy='loaded'] {
 }
 
 #header {
-  // position: fixed;
+  position: sticky;
+  top: 0;
   // left: 0;
   // right: 0;
   background-color: #fff;
-  padding-right: rem(12);
-  padding-left: rem(12);
+  @extend %horizonPadding;
   height: var(--system-toolbar-height);
   display: flex;
   align-items: center;
+  box-shadow: 0 1px 10px rgba(0,0,0,.2);
   h1 {
     font-size: rem(18);
     font-weight: 600;

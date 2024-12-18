@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import main from '@/publish/router/MenuMain.js'
-import prework from '@/publish/router/MenuPreWork.js'
 import common from '@/publish/router/MenuCommon.js'
 import usedetail from '@/publish/router/MenuUseDetail.js'
 import price from '@/publish/router/MenuPrice.js'
@@ -25,12 +24,11 @@ const router = createRouter({
 			component: () => import('@/publish/IndexView.vue'),
 		},
 		{
-			path: '/ComponentsList',
-			name: 'ComponentsList',
-			meta: { title: '공통 컴포넌트 리스트' },
-			component: () => import('@/publish/ComponentsList.vue'),
+			path: '/PubGuide',
+			name: 'PubGuide',
+			meta: { title: 'PUBLISH GUIDE' },
+			component: () => import('@/publish/PubGuide.vue'),
 		},
-		...prework, //선도개발
 		...common, //공통
 		...main, //메인
 		...usedetail, //이용내역

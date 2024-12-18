@@ -1,4 +1,9 @@
 <template>
+	<aside class="snb">
+		<ul><li><VBtn height="m"
+			>버튼</VBtn
+		></li></ul>
+	</aside>
 	<main id="content">
 		<VBtn @click="goPath('/ButtonCase')" :color="'primary'" :height="'sm'" :variant="'back'"
 			>버튼케이스보기</VBtn

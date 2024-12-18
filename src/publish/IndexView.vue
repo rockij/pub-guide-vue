@@ -1,12 +1,12 @@
 <template>
 	<main class="pub_status_board">
 		<section class="group_header">
-			<h1>NH농협카드 통합 디지털플랫폼구축</h1>
+			<h1>OO프로젝트 현황판</h1>
 			<div class="note">
 				<ul>
 					<li>
 						<strong>업데이트 관리자:</strong>
-						<span>WYLIE 이운주</span>
+						<span>김익중</span>
 					</li>
 					<li>
 						<p>팝업 용어정리</p>
@@ -35,49 +35,11 @@
 					</button>
 				</li>
 				<li>
-					<a href="/ComponentsList" target="_blank" class="type">공통컴포넌트</a>
+					<a href="/PubGuide" target="_blank" class="type">공통가이드</a>
 				</li>
 			</ul>
 		</nav>
 		<div class="menu_wrap" :class="menuWrap">
-			<!-- 선도개발 -->
-			<section class="menu_list menu14">
-				<h2>{{ tabMenu[14].text }}</h2>
-				<table>
-					<thead>
-						<tr>
-							<th v-for="(item, i) in tableTh" :key="i" scope="col">
-								{{ item.text }}
-							</th>
-						</tr>
-					</thead>
-					<tbody>
-						<TableList
-							v-for="(item, i) in prework"
-							:id="item.id"
-							:category="item.category"
-							:meta="item.meta"
-							:end="item.end"
-							:type="item.type"
-							:story="item.story"
-							:design="item.design"
-							:comment="item.comment"
-							:key="i"
-							:depth2Name="tableTh[0].text"
-							:depth3Name="tableTh[1].text"
-							:depth4Name="tableTh[2].text"
-							:depth5Name="tableTh[3].text"
-							:typeName="tableTh[4].text"
-							:idName="tableTh[5].text"
-							:storyVer="tableTh[6].text"
-							:designVer="tableTh[7].text"
-							:endName="tableTh[8].text"
-							:cmtName="tableTh[9].text"
-							@update="iframeChange(item.path)" />
-					</tbody>
-				</table>
-			</section>
-			<!--// 선도개발 -->
 
 			<!-- 공통 -->
 			<section class="menu_list menu1">
@@ -612,7 +574,6 @@ import living from '@/publish/router/MenuLiving.js' //생활편의
 import card from '@/publish/router/MenuCard.js' //카드
 import voucher from '@/publish/router/MenuVoucher.js' //공공/바우처
 import customer from '@/publish/router/MenuCustomer.js' //고객센터
-import prework from '@/publish/router/MenuPreWork.js' //선도개발
 import TableList from './IndexViewList.vue'
 const menuWrap = ref('all')
 const tabMenu = ref([
@@ -671,10 +632,6 @@ const tabMenu = ref([
 	{
 		text: '고객센터',
 		active: 'menu13',
-	},
-	{
-		text: '선도개발',
-		active: 'menu14',
 	},
 ])
 const tableTh = ref([
