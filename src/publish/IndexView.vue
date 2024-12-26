@@ -40,7 +40,6 @@
 			</ul>
 		</nav>
 		<div class="menu_wrap" :class="menuWrap">
-
 			<!-- 공통 -->
 			<section class="menu_list menu1">
 				<h2>{{ tabMenu[1].text }}<small> (DEPTH1)</small></h2>
