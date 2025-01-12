@@ -1,38 +1,28 @@
 <template>
-	<aside class="snb">
-		<ul>
-			<li><VBtn height="m" @click="changeCurrentComp(GuideDoc)">작업가이드</VBtn></li>
-			<li><VBtn height="m" @click="changeCurrentComp(TextCase)">텍스트</VBtn></li>
-			<li><VBtn height="m" @click="changeCurrentComp(ButtonCase)">버튼</VBtn></li>
-			<li><VBtn height="m" @click="changeCurrentComp(DialogCase)">팝업</VBtn></li>
-			<li><VBtn height="m" @click="changeCurrentComp(ExpansionCase)">확장패널</VBtn></li>
-			<li><VBtn height="m" @click="changeCurrentComp(TextfieldCase)">입력필드</VBtn></li>
-			<li><VBtn height="m" @click="changeCurrentComp(CheckboxCase)">체크박스</VBtn></li>
-			<li><VBtn height="m" @click="changeCurrentComp(RadioCase)">라디오</VBtn></li>
-			<li><VBtn height="m" @click="changeCurrentComp(SwitchCase)">스위치</VBtn></li>
-			<li><VBtn height="m" @click="changeCurrentComp(SelectCase)">셀렉트박스</VBtn></li>
-			<li><VBtn height="m" @click="changeCurrentComp(TabsCase)">탭</VBtn></li>
-			<li><VBtn height="m" @click="changeCurrentComp(TooltipCase)">툴팁</VBtn></li>
-			<li><VBtn height="m" @click="changeCurrentComp(SlideCase)">slide</VBtn></li>
-			<li><VBtn height="m" @click="changeCurrentComp(ImageCase)">이미지로딩</VBtn></li>
-			<li><VBtn height="m" @click="changeCurrentComp(NavSticky)">상단고정</VBtn></li>
-			<li>
-				<VBtn height="m" @click="changeCurrentComp(ScrollSectionView)"
-					>스크롤 중 영역실행</VBtn
-				>
-			</li>
-			<li>
-				<VBtn height="m" @click="toast = true">toast</VBtn>
-			</li>
-		</ul>
-	</aside>
-	<main id="content">
-		<component :is="currentComp" />
+	<div class="pub_guide_board">
+		<aside class="pub_guide_snb">
+			<ul>
+				<li v-for="(item, i) in snbItem" :key="i">
+					<VBtn
+						height="m"
+						:class="{ active: activeIndex === i }"
+						@click="changeCurrentComp(item.comp, i)"
+						>{{ item.label }}</VBtn
+					>
+				</li>
+				<li>
+					<VBtn height="m" @click="toast = true">toast</VBtn>
+				</li>
+			</ul>
+		</aside>
+		<main class="pub_guide_content">
+			<component :is="currentComp" />
 
-		<VToast :toast="toast" :id="'toast1'" @close="toast = false" :linkUrl="'/'">
-			토스트메시지 입니다
-		</VToast>
-	</main>
+			<VToast :toast="toast" :id="'toast1'" @close="toast = false" :linkUrl="'/'">
+				토스트메시지 입니다
+			</VToast>
+		</main>
+	</div>
 </template>
 
 <script setup>
@@ -54,6 +44,7 @@ import SlideCase from '@/publish/views/guide/SlideCase.vue'
 import TabsCase from '@/publish/views/guide/TabsCase.vue'
 import SwitchCase from '@/publish/views/guide/SwitchCase.vue'
 import ImageCase from '@/publish/views/guide/ImageCase.vue'
+import ScrollSectionView from '@/publish/views/guide/ScrollSectionView.vue'
 import { ref } from 'vue'
 const toast = ref(false)
 
@@ -62,14 +53,28 @@ const toast = ref(false)
 // }
 
 const currentComp = ref(GuideDoc)
-const changeCurrentComp = comp => (currentComp.value = comp)
-</script>
+const changeCurrentComp = (comp, index) => {
+	currentComp.value = comp
+	activeIndex.value = index
+}
 
-<style lang="scss" scoped>
-main {
-	padding: 30px 20px;
-}
-.btn__basic {
-	margin-right: 10px;
-}
-</style>
+const activeIndex = ref(0)
+const snbItem = [
+	{ label: '작업가이드', comp: GuideDoc },
+	{ label: '텍스트', comp: TextCase },
+	{ label: '버튼', comp: ButtonCase },
+	{ label: '팝업', comp: DialogCase },
+	{ label: '확장패널', comp: ExpansionCase },
+	{ label: '입력필드', comp: TextfieldCase },
+	{ label: '체크박스', comp: CheckboxCase },
+	{ label: '라디오', comp: RadioCase },
+	{ label: '스위치', comp: SwitchCase },
+	{ label: '셀렉트박스', comp: SelectCase },
+	{ label: '탭', comp: TabsCase },
+	{ label: '툴팁', comp: TooltipCase },
+	{ label: 'slide', comp: SlideCase },
+	{ label: '이미지로딩', comp: ImageCase },
+	{ label: '상단고정', comp: NavSticky },
+	{ label: '스크롤 중 영역실행', comp: ScrollSectionView },
+]
+</script>

@@ -1,50 +1,46 @@
 <template>
-	<main id="content">
-		<h2>Single Animation No</h2>
-		<VExpansion :id="`expanded-single`" :expanded="singleExpansion" :transition="false">
-			<template #title>
-				<button
-					type="button"
-					class="expansion__trigger"
-					@click="singleExpansion = !singleExpansion">
-					타이틀
-				</button>
-			</template>
-			내용입니다
-		</VExpansion>
+	<h2>Single Animation No</h2>
+	<VExpansion :id="`expanded-single`" :expanded="singleExpansion" :transition="false">
+		<template #title>
+			<button
+				type="button"
+				class="expansion__trigger"
+				@click="singleExpansion = !singleExpansion">
+				타이틀
+			</button>
+		</template>
+		내용입니다
+	</VExpansion>
 
-		<h2>Expanded True fix</h2>
-		<VExpansion :id="`expanded-single`" :expanded="true">
-			<template #title>
-				<button
-					disabled
-					type="button"
-					class="expansion__trigger"
-					@click="singleExpansion = !singleExpansion">
-					타이틀
-				</button>
-			</template>
-			내용입니다
-		</VExpansion>
+	<h2>Expanded True fix</h2>
+	<VExpansion :id="`expanded-single`" :expanded="true">
+		<template #title>
+			<button
+				disabled
+				type="button"
+				class="expansion__trigger"
+				@click="singleExpansion = !singleExpansion">
+				타이틀
+			</button>
+		</template>
+		내용입니다
+	</VExpansion>
 
-		<h2>Accordion</h2>
-		<VExpansion
-			:id="`expanded${item.value}`"
-			v-for="(item, i) in accordionExpansion"
-			:key="i"
-			:expanded="item.expanded">
-			<template #title>
-				<button
-					type="button"
-					class="expansion__trigger"
-					@click="accordionExpansionHandle(i)">
-					{{ item.title }}
-				</button>
-			</template>
-			{{ item.text }}
-		</VExpansion>
+	<h2>Accordion</h2>
+	<VExpansion
+		:id="`expanded${item.value}`"
+		v-for="(item, i) in accordionExpansion"
+		:key="i"
+		:expanded="item.expanded">
+		<template #title>
+			<button type="button" class="expansion__trigger" @click="accordionExpansionHandle(i)">
+				{{ item.title }}
+			</button>
+		</template>
+		{{ item.text }}
+	</VExpansion>
 
-		<!-- <h2>Accordion</h2>
+	<!-- <h2>Accordion</h2>
 		<VExpansion
 			:id="`expanded${item.value}`"
 			v-for="(item, i) in accordionExpansion"
@@ -60,7 +56,6 @@
 			</template>
 			{{ item.text }}
 		</VExpansion> -->
-	</main>
 </template>
 
 <script setup>

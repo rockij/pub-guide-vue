@@ -129,6 +129,7 @@ img[lazy='loaded'] {
   display: flex;
   align-items: center;
   box-shadow: 0 1px 10px rgba(0, 0, 0, .2);
+  z-index: 30;
 
   h1 {
     font-size: rem(18);
@@ -401,15 +402,4 @@ img[lazy='loaded'] {
 
 @import './components.scss'; //컴포넌트
 @import './main.scss'; //메인
-@import './usedetail.scss'; //이용내역
-@import './price.scss'; //대금결제
-@import './mycard.scss'; //내카드관리
-@import './myinfo.scss'; //내정보관리
-@import './benefit.scss'; //혜택
-@import './payment.scss'; //결제
-@import './finance.scss'; //금융
-@import './living.scss'; //생활편의
-@import './card.scss'; //카드
-@import './voucher.scss'; //공공&바우처
-@import './customer.scss'; //고객센터
 @import './status.scss'; //STATUS

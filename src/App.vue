@@ -11,6 +11,5 @@
 </template>
 
 <script setup>
-import VIcon from '@/publish/components/VIcon.vue'
 import '@/assets/scss/style.scss'
 </script>

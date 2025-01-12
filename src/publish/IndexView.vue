@@ -562,17 +562,6 @@
 import { ref } from 'vue'
 import common from '@/publish/router/MenuCommon.js' //공통
 import main from '@/publish/router/MenuMain.js' //메인
-import usedetail from '@/publish/router/MenuUseDetail.js' //이용내역
-import price from '@/publish/router/MenuPrice.js' //대금결제
-import mycard from '@/publish/router/MenuMycard.js' //내카드관리
-import myinfo from '@/publish/router/MenuMyinfo.js' //내정보관리
-import benefit from '@/publish/router/MenuBenefit.js' //혜택
-import payment from '@/publish/router/MenuPayment.js' //결제
-import finance from '@/publish/router/MenuFinance.js' //금융
-import living from '@/publish/router/MenuLiving.js' //생활편의
-import card from '@/publish/router/MenuCard.js' //카드
-import voucher from '@/publish/router/MenuVoucher.js' //공공/바우처
-import customer from '@/publish/router/MenuCustomer.js' //고객센터
 import TableList from './IndexViewList.vue'
 const menuWrap = ref('all')
 const tabMenu = ref([

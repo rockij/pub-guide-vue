@@ -1,10 +1,10 @@
 <template>
-	<span class="switch__spring">
-		<input id="switch" type="checkbox" />
-		<label for="switch">스위치연결</label>
-	</span>
+	<strong>기본 스위치</strong><br />
+	<VSwitch :checked="checked" @click="checked = !checked" />
 </template>
 
-<script setup></script>
-
-<style lang="scss" scoped></style>
+<script setup>
+import VSwitch from '@/publish/components/VSwitch.vue'
+import { ref } from 'vue'
+const checked = ref(false)
+</script>
