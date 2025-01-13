@@ -59,4 +59,20 @@ const { direction, lengthX, lengthY } = useSwipe(target, {
 		}
 	},
 })
+
+const onSwipeLeft = () => {
+	container.value.classList.add('swipe_left')
+	setTimeout(() => {
+		emits('end:left')
+	}, 300)
+}
+
+const onSwipeRight = () => {
+	container.value.classList.add('swipe_right')
+	setTimeout(() => {
+		emits('end:right')
+	}, 300)
+}
+
+defineExpose({ container, onSwipeLeft, onSwipeRight })
 </script>

@@ -674,3 +674,114 @@
   background: rgb(64, 175, 255);
   background: linear-gradient(128deg, rgba(64, 175, 255, 1) 0%, rgba(63, 97, 255, 1) 100%);
 }
+
+// card-swipe n
+.carousel__card_swipe {
+  position: relative;
+
+  .btn_prev,
+  .btn_next {
+    position: absolute;
+    width: rem(44);
+    height: rem(44);
+    // @include bgi(
+    //   'common/icon_arrow_right05',
+    //   $format: 'png',
+    //   $size: rem(7) auto,
+    //   $position: 50% 50%
+    // );
+    z-index: 1;
+    top: 50%;
+    margin-top: rem(-15);
+    border:1px solid;
+  }
+
+  .btn_prev {
+    left: rem(2);
+    transform: translateY(-50%);
+  }
+
+  .btn_next {
+    right: rem(2);
+    transform: translateY(-50%) rotate(180deg);
+  }
+}
+
+.card_wrap {
+  overflow-x: hidden;
+  display: grid;
+  padding-top: 18px;
+
+  %imgSize {
+    width: rem(270);
+    height: rem(170);
+  }
+
+  > * {
+    grid-area: 1 / -1;
+  }
+
+  .img_box {
+    .itarget {
+      @extend %imgSize;
+    }
+
+    &.rotate_x {
+      &::before {
+        @extend %imgSize;
+      }
+      .itarget {
+        width: auto;
+        height: rem(270);
+      }
+    }
+  }
+
+  .img_error {
+    @extend %imgSize;
+  }
+  article {
+    transition-duration: var(--system-animation-speed);
+    > .inner {
+      overflow: hidden;
+      display: grid;
+      position: relative;
+      > * {
+        grid-area: 1 / -1;
+      }
+    }
+    img {
+      width: 100%;
+      border-radius: 12px;
+    }
+    .card_item {
+      align-self: end;
+      border-radius: 0 0 12px 12px;
+    }
+    @for $i from 2 through 3 {
+      &:nth-last-child(#{$i}) {
+        margin-top: calc((#{$i} - 1) * 6px);
+        transform: scale(calc(1 - (#{$i} * 0.1 - 0.1)));
+        transform-origin: center top;
+      }
+    }
+    &:nth-last-of-type(n + 4):nth-last-of-type(-n + 100) {
+      margin-top: 18px;
+      padding-right: 30px;
+      padding-left: 30px;
+      display: none;
+    }
+    &.swipe_left {
+      transform: translateX(-100vw);
+    }
+    &.swipe_right {
+      transform: translateX(100vw);
+    }
+    &:last-child {
+      .btn_prev,
+      .btn_next {
+        display: block;
+      }
+    }
+  }
+}

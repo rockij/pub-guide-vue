@@ -109,9 +109,9 @@ img[lazy='loaded'] {
 
   .isFixed {
     position: fixed;
-    // top: var(--system-toolbar-height);
-    top: 0;
-    left: 0;
+    top: var(--system-toolbar-height);
+    // top: 0;
+    left: 20rem;
     right: 0;
     background-color: #fff;
     animation: sticky-fade var(--system-animation-speed) ease;
