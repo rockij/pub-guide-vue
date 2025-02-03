@@ -2,20 +2,17 @@
 	<Teleport to="body">
 		<Transition>
 			<div
-				v-if="props.dialog === true"
+				v-if="isShow"
 				:id="props.id"
 				role="dialog"
 				aria-modal="true"
-				class="dialog__wrap"
-				:class="dialogType">
-				<div
+				:class="['dialog__wrap', `dialog__${dialogType}`]">
+				<VBtn
 					v-if="props.dim"
-					role="button"
-					aria-hidden="true"
 					title="팝업닫기"
 					class="dialog__back"
 					:class="!props.dimTouch ? 'noevent' : ''"
-					@click="$emit('close')"></div>
+					@click="$emit('update')"></VBtn>
 				<div class="dialog__body">
 					<header v-if="$slots.header" class="dialog__header">
 						<slot name="header"></slot>
@@ -31,7 +28,7 @@
 						type="button"
 						title="팝업닫기"
 						class="dialog__close"
-						@click="$emit('close')"></button>
+						@click="$emit('update')"></button>
 				</div>
 			</div>
 		</Transition>
@@ -39,15 +36,12 @@
 </template>
 
 <script setup>
-import { computed, onUpdated } from 'vue'
+import VBtn from '@/publish/components/VButton.vue'
+import { ref, onUpdated } from 'vue'
 
-defineEmits(['close'])
+defineEmits(['update'])
 
 const props = defineProps({
-	dialog: {
-		type: Boolean,
-		default: false,
-	},
 	id: {
 		type: String,
 		default: null,
@@ -57,6 +51,7 @@ const props = defineProps({
 	type: {
 		type: String,
 		default: null,
+		required: true,
 	},
 	// 상단 우측 x
 	closeBtn: {
@@ -75,25 +70,23 @@ const props = defineProps({
 	},
 })
 
-const dialogType = computed(() => {
-	if (props.type === 'alert') {
-		return 'dialog__alert'
-	} else if (props.type === 'center') {
-		return 'dialog__center'
-	} else if (props.type === 'bottom') {
-		return 'dialog__bottom'
-	} else if (props.type === 'full') {
-		return 'dialog__full'
-	} else {
-		return false
-	}
-})
+const isShow = ref(false)
+const show = () => {
+	isShow.value = true
+}
+const hide = () => {
+	isShow.value = false
+}
+
+const dialogType = ref(props.type)
 
 onUpdated(() => {
-	if (props.dialog === true) {
+	if (isShow.value === true) {
 		document.querySelector('body').classList.add('isHidden')
 	} else {
 		document.querySelector('body').classList.remove('isHidden')
 	}
 })
+
+defineExpose({ show, hide })
 </script>

@@ -1,28 +1,18 @@
 <template>
 	<!-- alert -->
 	<VBtn
-		:color="'primary'"
-		:height="'m'"
-		:variant="'back'"
-		@click="dialog3 = true"
+		color="primary"
+		height="m"
+		variant="back"
+		@click="dialog3.show()"
 		aria-haspopup="dialog"
 		:aria-controls="dialogId3"
 		>alert</VBtn
 	>
-	<VDialog
-		:type="'alert'"
-		:dialog="dialog3"
-		:id="dialogId3"
-		:closeBtn="false"
-		@close="dialog3 = false">
+	<VDialog ref="dialog3" type="alert" :id="dialogId3" :closeBtn="false" @update="testFunc">
 		<template #header><h2>타이틀</h2></template>
 		<template #footer>
-			<VBtn
-				:color="'primary'"
-				:height="'m'"
-				:variant="'back'"
-				:block="true"
-				@click="dialog3 = false"
+			<VBtn color="primary" height="m" variant="back" block @click="dialog3.hide()"
 				>확인</VBtn
 			>
 		</template>
@@ -34,24 +24,20 @@
 
 	<!-- center -->
 	<VBtn
-		:color="'primary'"
-		:height="'m'"
-		:variant="'back'"
-		@click="dialog4 = true"
+		color="primary"
+		height="m"
+		variant="back"
+		@click="dialog4.show()"
 		aria-haspopup="dialog"
 		:aria-controls="dialogId4"
 		>center</VBtn
 	>
-	<VDialog :type="'center'" :dialog="dialog4" :id="dialogId4" @close="dialog4 = false">
+	<VDialog ref="dialog4" type="center" :id="dialogId4" @update="dialog4.hide()">
 		<template #header><h2>타이틀</h2></template>
 		<template #footer>
 			<div class="btnarea">
-				<VBtn :color="'cancel'" :height="'m'" :variant="'back'" @click="dialog4 = false"
-					>취소</VBtn
-				>
-				<VBtn :color="'primary'" :height="'m'" :variant="'back'" @click="dialog4 = false"
-					>확인</VBtn
-				>
+				<VBtn color="cancel" height="m" variant="back" @click="dialog4.hide()">취소</VBtn>
+				<VBtn color="primary" height="m" variant="back" @click="dialog4.hide()">확인</VBtn>
 			</div>
 		</template>
 		팝업의 기본 내용 입력
@@ -62,20 +48,18 @@
 
 	<!-- center -->
 	<VBtn
-		:color="'primary'"
-		:height="'m'"
-		:variant="'back'"
-		@click="dialog = true"
+		color="primary"
+		height="m"
+		variant="back"
+		@click="dialog.show()"
 		aria-haspopup="dialog"
 		:aria-controls="dialogId"
 		>center &gt; dim x</VBtn
 	>
-	<VDialog :type="'center'" :dialog="dialog" :id="dialogId" :dim="false" @close="dialog = false">
+	<VDialog ref="dialog" type="center" :id="dialogId" :dim="false" @update="dialog.hide()">
 		<template #header><h2>타이틀</h2></template>
 		<template #footer>
-			<VBtn :color="'primary'" :height="'m'" :variant="'back'" @click="dialog = false"
-				>확인</VBtn
-			>
+			<VBtn color="primary" height="m" variant="back" @click="dialog.hide()">확인</VBtn>
 		</template>
 		팝업의 기본 내용 입력
 	</VDialog>
@@ -85,20 +69,18 @@
 
 	<!-- bottom-sheet -->
 	<VBtn
-		:color="'primary'"
-		:height="'m'"
-		:variant="'back'"
-		@click="dialog2 = true"
+		color="primary"
+		height="m"
+		variant="back"
+		@click="dialog2.show()"
 		aria-haspopup="dialog"
 		:aria-controls="dialogId2"
 		>bottom-sheet</VBtn
 	>
-	<VDialog :type="'bottom'" :dialog="dialog2" :id="dialogId2" @close="dialog2 = false">
+	<VDialog ref="dialog2" type="bottom" :id="dialogId2" @update="dialog2.hide()">
 		<template #header><h2>타이틀</h2></template>
 		<template #footer>
-			<VBtn :color="'primary'" :height="'m'" :variant="'back'" @click="dialog2 = false"
-				>확인</VBtn
-			>
+			<VBtn color="primary" height="m" variant="back" @click="dialog2.hide()">확인</VBtn>
 		</template>
 		팝업의 기본 내용 입력
 	</VDialog>
@@ -108,25 +90,18 @@
 
 	<!-- bottom-sheet -->
 	<VBtn
-		:color="'primary'"
-		:height="'m'"
-		:variant="'back'"
-		@click="dialog5 = true"
+		color="primary"
+		height="m"
+		variant="back"
+		@click="dialog5.show()"
 		aria-haspopup="dialog"
 		:aria-controls="dialogId5"
 		>bottom-sheet &gt; dim noevent</VBtn
 	>
-	<VDialog
-		:type="'bottom'"
-		:dialog="dialog5"
-		:id="dialogId5"
-		:dimTouch="false"
-		@close="dialog5 = false">
+	<VDialog ref="dialog5" type="bottom" :id="dialogId5" :dimTouch="false" @update="dialog5.hide()">
 		<template #header><h2>타이틀</h2></template>
 		<template #footer>
-			<VBtn :color="'primary'" :height="'m'" :variant="'back'" @click="dialog5 = false"
-				>확인</VBtn
-			>
+			<VBtn color="primary" height="m" variant="back" @click="dialog5.hide()">확인</VBtn>
 		</template>
 		팝업의 기본 내용 입력
 	</VDialog>
@@ -136,21 +111,21 @@
 
 	<!-- full -->
 	<VBtn
-		:color="'primary'"
-		:height="'m'"
-		:variant="'back'"
-		@click="dialog6 = true"
+		color="primary"
+		height="m"
+		variant="back"
+		@click="dialog6.show()"
 		aria-haspopup="dialog"
 		:aria-controls="dialogId6"
 		>full</VBtn
 	>
 	<VDialog
-		:type="'full'"
-		:dialog="dialog6"
+		ref="dialog6"
+		type="full"
 		:id="dialogId6"
 		:dim="false"
 		:dimTouch="false"
-		@close="dialog6 = false">
+		@update="dialog6.hide()">
 		<template #header><h2>타이틀</h2></template>
 		Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi odit, ipsa saepe nesciunt
 		aliquam obcaecati quam non voluptatem perferendis quae dolore atque amet ipsum facere
@@ -256,10 +231,8 @@ const dialogId3 = ref('dialogPopup3')
 const dialogId4 = ref('dialogPopup4')
 const dialogId5 = ref('dialogPopup5')
 const dialogId6 = ref('dialogPopup6')
-</script>
 
-<style lang="scss" scoped>
-main {
-	padding: 30px 20px 1000px;
+const testFunc = () => {
+	alert('이벤트 호출')
 }
-</style>
+</script>
