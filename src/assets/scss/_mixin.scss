@@ -88,3 +88,69 @@ $breakpoint-max: 586px;
 @mixin ls($value: 1) {
   letter-spacing: calc($value * 0.01rem);
 }
+
+// 비밀번호 입력 배경
+// pass-dot-image('common/pass-dot-image', 24px, 1)
+@mixin pass-dot-image($image, $size, $dot: 0, $format: 'svg') {
+  background-size: $size auto;
+  background-repeat: no-repeat;
+  background-position:
+    0 50%,
+    2rem 50%,
+    4rem 50%,
+    6rem 50%,
+    8rem 50%,
+    10rem 50%,
+    12rem 50%,
+    14rem 50%,
+    16rem 50%,
+    18rem 50%,
+    20rem 50%,
+    22rem 50%,
+    24rem 50%,
+    26rem 50%,
+    28rem 50%,
+    30rem 50%;
+
+  @if $dot == 1 {
+    background-image: url('/src/assets/images/#{$image}.#{$format}');
+  } @else if $dot == 2 {
+    background-image: url('/src/assets/images/#{$image}.#{$format}'), url('/src/assets/images/#{$image}.#{$format}');
+  } @else if $dot == 3 {
+    background-image: url('/src/assets/images/#{$image}.#{$format}'), url('/src/assets/images/#{$image}.#{$format}'),
+    url('/src/assets/images/#{$image}.#{$format}');
+  } @else if $dot == 4 {
+    background-image: url('/src/assets/images/#{$image}.#{$format}'), url('/src/assets/images/#{$image}.#{$format}'),
+    url('/src/assets/images/#{$image}.#{$format}'), url('/src/assets/images/#{$image}.#{$format}');
+  } @else if $dot == 5 {
+    background-image: url('/src/assets/images/#{$image}.#{$format}'), url('/src/assets/images/#{$image}.#{$format}'),
+    url('/src/assets/images/#{$image}.#{$format}'), url('/src/assets/images/#{$image}.#{$format}'),
+    url('/src/assets/images/#{$image}.#{$format}');
+  } @else if $dot == 6 {
+    background-image: url('/src/assets/images/#{$image}.#{$format}'), url('/src/assets/images/#{$image}.#{$format}'),
+    url('/src/assets/images/#{$image}.#{$format}'), url('/src/assets/images/#{$image}.#{$format}'),
+    url('/src/assets/images/#{$image}.#{$format}'), url('/src/assets/images/#{$image}.#{$format}');
+  } @else if $dot == 7 {
+    background-image: url('/src/assets/images/#{$image}.#{$format}'), url('/src/assets/images/#{$image}.#{$format}'),
+    url('/src/assets/images/#{$image}.#{$format}'), url('/src/assets/images/#{$image}.#{$format}'),
+    url('/src/assets/images/#{$image}.#{$format}'), url('/src/assets/images/#{$image}.#{$format}'),
+    url('/src/assets/images/#{$image}.#{$format}');
+  } @else if $dot == 8 {
+    background-image: url('/src/assets/images/#{$image}.#{$format}'), url('/src/assets/images/#{$image}.#{$format}'),
+    url('/src/assets/images/#{$image}.#{$format}'), url('/src/assets/images/#{$image}.#{$format}'),
+    url('/src/assets/images/#{$image}.#{$format}'), url('/src/assets/images/#{$image}.#{$format}'),
+    url('/src/assets/images/#{$image}.#{$format}'), url('/src/assets/images/#{$image}.#{$format}');
+  } @else if $dot == 9 {
+    background-image: url('/src/assets/images/#{$image}.#{$format}'), url('/src/assets/images/#{$image}.#{$format}'),
+    url('/src/assets/images/#{$image}.#{$format}'), url('/src/assets/images/#{$image}.#{$format}'),
+    url('/src/assets/images/#{$image}.#{$format}'), url('/src/assets/images/#{$image}.#{$format}'),
+    url('/src/assets/images/#{$image}.#{$format}'), url('/src/assets/images/#{$image}.#{$format}'),
+    url('/src/assets/images/#{$image}.#{$format}');
+  } @else if $dot == 10 {
+    background-image: url('/src/assets/images/#{$image}.#{$format}'), url('/src/assets/images/#{$image}.#{$format}'),
+    url('/src/assets/images/#{$image}.#{$format}'), url('/src/assets/images/#{$image}.#{$format}'),
+    url('/src/assets/images/#{$image}.#{$format}'), url('/src/assets/images/#{$image}.#{$format}'),
+    url('/src/assets/images/#{$image}.#{$format}'), url('/src/assets/images/#{$image}.#{$format}'),
+    url('/src/assets/images/#{$image}.#{$format}'), url('/src/assets/images/#{$image}.#{$format}');
+  }
+}

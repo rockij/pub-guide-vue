@@ -1,4 +1,7 @@
 <template>
+	<h2>이미지 패스워드</h2>
+	<div class="textfield__underline textfield__pwimg -digits2"></div>
+
 	<h2>type: text, 입력길이 체크</h2>
 	<VTextfield
 		class="textfield__underline"

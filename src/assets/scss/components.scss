@@ -485,6 +485,15 @@
       color: var(--system-colorFont-error);
     }
   }
+  &__pwimg {
+    @for $i from 1 through 10 {
+      &.-digits#{$i} {
+        @include pass-dot-image('common/icon_pw', 24px, $i)
+      }
+    } 
+    height: rem(56);
+    width: 100px;
+  }
 }
 .fieldset__bside {
   display: flex;
