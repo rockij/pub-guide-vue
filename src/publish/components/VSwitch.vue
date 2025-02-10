@@ -1,19 +1,45 @@
 <template>
 	<span
-		:class="['switch__spring', props.checked ? 'on' : '']"
-		role="switch"
-		:title="props.checked ? '선택됨' : null">
+		role="button"
+		:title="title"
+		:aria-checked="checked"
+		:aria-disabled="disabled"
+		class="switch__spring"
+		@click="onClick">
 		<span class="ball"></span>
-		<label for="switch">스위치연결</label>
-		{{ props.checked }}
+		<slot name="default"></slot>
 	</span>
 </template>
 
 <script setup>
+import { computed } from 'vue'
+
 const props = defineProps({
-	checked: {
+	check: {
 		type: Boolean,
 		default: false,
 	},
+	title: {
+		type: String,
+		default: null,
+	},
+	disabled: {
+		type: Boolean,
+		default: null,
+	},
 })
+
+const emits = defineEmits(['update:check'])
+const checked = computed({
+	get() {
+		return props.check
+	},
+	set(check) {
+		emits('update:check', check)
+	},
+})
+const onClick = () => {
+	const newVal = !checked.value
+	checked.value = newVal
+}
 </script>

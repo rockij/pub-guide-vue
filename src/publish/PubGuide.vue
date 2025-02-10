@@ -31,6 +31,7 @@ import VBtn from '@/publish/components/VButton.vue'
 import VToast from '@/publish/components/VToast.vue'
 import NavSticky from '@/publish/components/NavSticky.vue'
 import GuideDoc from '@/publish/views/guide/GuideDoc.vue'
+import IndexView from '@/publish/IndexView.vue'
 import ButtonCase from '@/publish/views/guide/ButtonCase.vue'
 import TextCase from '@/publish/views/guide/TextCase.vue'
 import DialogCase from '@/publish/views/guide/DialogCase.vue'
@@ -61,6 +62,7 @@ const changeCurrentComp = (comp, index) => {
 const activeIndex = ref(0)
 const snbItem = [
 	{ label: '작업가이드', comp: GuideDoc },
+	{ label: '현황판', comp: IndexView },
 	{ label: '텍스트', comp: TextCase },
 	{ label: '버튼', comp: ButtonCase },
 	{ label: '팝업', comp: DialogCase },

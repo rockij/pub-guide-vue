@@ -7,15 +7,15 @@ const router = createRouter({
 	routes: [
 		{
 			path: '/',
-			name: 'IndexView',
-			// meta: { title: '현황판' },
-			component: () => import('@/publish/IndexView.vue'),
-		},
-		{
-			path: '/PubGuide',
 			name: 'PubGuide',
 			meta: { title: 'PUBLISH GUIDE' },
 			component: () => import('@/publish/PubGuide.vue'),
+		},
+		{
+			path: '/IndexView',
+			name: 'IndexView',
+			// meta: { title: '현황판' },
+			component: () => import('@/publish/IndexView.vue'),
 		},
 		...common, //공통
 		...main, //메인

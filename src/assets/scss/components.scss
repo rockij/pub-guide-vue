@@ -663,13 +663,16 @@
       transition: all 0.1s ease 0.1s;
     }
   }
-  &.on {
+  &[aria-checked=true] {
     .ball {
       padding-left: calc($size-width/2 - 0.1rem);
       transition-delay: 0s, 0s;
       box-shadow: inset 0 0 0 2.62857em var(--system-colorBg-skip) !important;
       padding-left: calc($size-width/2 - 0.1rem);
     }
+  }
+  &[aria-disabled=true] {
+    pointer-events: none;
   }
 }
 
