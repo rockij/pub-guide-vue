@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper-x3n3nnut.js";import{a as r,b as c}from"./index-xCAbr6jb.js";const n={};function o(t,a){return r(),c("main",null,"COA100000")}const f=e(n,[["render",o]]);export{f as default};

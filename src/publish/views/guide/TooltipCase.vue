@@ -1,22 +1,20 @@
 <template>
-	<Tippy
-		content="툴팁내용입니다"
-		animation="fade"
-		trigger="click"
-		:hideOnClick="true"
-		placement="bottom
-			">
-		<VBtn color="primary" height="sm" variant="back">tooltip</VBtn>
-	</Tippy>
-
-	<Tippy animation="fade" trigger="click" :hideOnClick="true" placement="bottom">
-		<VBtn color="primary" height="sm" variant="back">tooltip (templet)</VBtn>
-		<template #content> 툴팁내용입니다 </template>
-	</Tippy>
+	<VTooltip :isShow="true" content="나는 툴팁입니다" :buttonConfig="buttonConfig"></VTooltip>
+	<VTooltip
+		:isShow="true"
+		:hideOnClick="false"
+		content="나를 닫지는 못한다"
+		:buttonConfig="buttonConfig"></VTooltip>
 </template>
 
 <script setup>
-import { Tippy } from 'vue-tippy'
-import 'tippy.js/dist/tippy.css'
+import { ref } from 'vue'
+
 import VBtn from '@/publish/components/VButton.vue'
+import VTooltip from '@/publish/components/VTooltip.vue'
+
+const buttonConfig = ref({
+	label: '클릭',
+	callback: () => alert('클릭됨'),
+})
 </script>

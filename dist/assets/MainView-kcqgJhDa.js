@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper-x3n3nnut.js";import{a as n,b as r}from"./index-xCAbr6jb.js";const c={};function o(t,a){return n(),r("main",null,"메인페이지")}const f=e(c,[["render",o]]);export{f as default};
