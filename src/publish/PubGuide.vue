@@ -43,6 +43,7 @@ import RadioCase from '@/publish/views/guide/RadioCase.vue'
 import SelectCase from '@/publish/views/guide/SelectCase.vue'
 import SlideCase from '@/publish/views/guide/SlideCase.vue'
 import TabsCase from '@/publish/views/guide/TabsCase.vue'
+import RangeCase from '@/publish/views/guide/RangeCase.vue'
 import SwitchCase from '@/publish/views/guide/SwitchCase.vue'
 import ImageCase from '@/publish/views/guide/ImageCase.vue'
 import ScrollSectionView from '@/publish/views/guide/ScrollSectionView.vue'
@@ -71,6 +72,7 @@ const snbItem = [
 	{ label: '체크박스', comp: CheckboxCase },
 	{ label: '라디오', comp: RadioCase },
 	{ label: '스위치', comp: SwitchCase },
+	{ label: 'range', comp: RangeCase },
 	{ label: '셀렉트박스', comp: SelectCase },
 	{ label: '탭', comp: TabsCase },
 	{ label: '툴팁', comp: TooltipCase },
