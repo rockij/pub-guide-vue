@@ -1,6 +1,6 @@
 <template>
 	<Teleport to="body">
-		<Transition>
+		<Transition @after-enter="$emit('afterEnter')" @after-leave="$emit('afterLeave')">
 			<div
 				v-if="isShow"
 				:id="props.id"
@@ -39,7 +39,7 @@
 import VBtn from '@/publish/components/VButton.vue'
 import { ref, onUpdated } from 'vue'
 
-defineEmits(['update'])
+defineEmits(['update', 'afterEnter', 'afterLeave'])
 
 const props = defineProps({
 	id: {
